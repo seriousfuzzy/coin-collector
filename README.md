@@ -1,1 +1,2 @@
-# coin-collector
+# CryptocurrencyClient
+クライアント用
