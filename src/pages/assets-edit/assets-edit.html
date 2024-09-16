@@ -25,15 +25,13 @@
                     <ion-icon name="search"></ion-icon>
                 </ion-label>
                 <ion-input placeholder="例）Bitcoin, BTC, bitcoin"
-                           (input)="getInputCoinName()"
-                           id="assets-edit-coin-add-form"
-                           [(ngModel)]="selectedCoinName"></ion-input>
+                           (input)="getInputCoinName($event.target.value)"></ion-input>
             </ion-item>
 
             <ion-list inset *ngIf="isInput">
-                <button ion-item *ngFor="let coin of matchedCoinList" (click)="selectCoinName(coin.id)">
+                <li ion-item *ngFor="let coin of matchedCoinList">
                     {{coin.name}}（{{coin.symbol}}）
-                </button>
+                </li>
             </ion-list>
 
             <ion-item *ngIf="isNotFound" text-wrap>
