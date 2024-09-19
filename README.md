@@ -39,7 +39,7 @@ yarn
 
 ## 実行
 ```shell
-npm run mock
+json-server mock/mock-server.json
 ```
 
 ## アクセス先(デフォルト)
