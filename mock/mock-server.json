@@ -1,33 +1,33 @@
 {
   "assets": [
     {
-      "amount": "2",
       "id": "ripple",
+      "amount": 10.0011,
       "price_jpy": "180.185289005"
     },
     {
-      "amount": "0.0745",
       "id": "dash",
+      "amount": 10.0011,
       "price_jpy": "96617.4377429"
     },
     {
-      "amount": "1.0011",
       "id": "lisk",
+      "amount": 10.0011,
       "price_jpy": "2647.96251141"
     },
     {
-      "amount": "0.0011",
       "id": "litecoin",
+      "amount": 10.0011,
       "price_jpy": "22216.919874"
     },
     {
-      "amount": "0.0001",
       "id": "bitcoin",
+      "amount": 0.0001,
       "price_jpy": "1299558.46737"
     },
     {
-      "amount": "0.0211",
       "id": "bitcoin-cash",
+      "amount": 0.1211,
       "price_jpy": "205469.66674"
     },
     {
@@ -39,7 +39,9 @@
   "articles": [
     {
       "id": 1,
+      "user_name": "がちゃたろう1",
       "url": "https://twitter.com",
+      "image": "http://xn--eck5eb7eb2541d26fovj.biz/wp-content/uploads/2015/02/927c75bc-1024x576.jpg",
       "comment": "その一",
       "good": 1,
       "bad": 1,
@@ -47,7 +49,9 @@
     },
     {
       "id": 2,
+      "user_name": "がちゃたろう2",
       "url": "https://apple.com",
+      "image": "http://xn--eck5eb7eb2541d26fovj.biz/wp-content/uploads/2015/02/927c75bc-1024x576.jpg",
       "comment": "その二です\nよんでください\n\n\n\nよろしくお願いします",
       "good": 0,
       "bad": 10,
@@ -55,7 +59,9 @@
     },
     {
       "id": 3,
+      "user_name": "がちゃたろう3",
       "url": "https://yahoo.co.jp",
+      "image": "http://xn--eck5eb7eb2541d26fovj.biz/wp-content/uploads/2015/02/927c75bc-1024x576.jpg",
       "comment": "その三",
       "good": 100,
       "bad": 2,
@@ -63,7 +69,9 @@
     },
     {
       "id": 4,
+      "user_name": "がちゃたろう4",
       "url": "https://github.com",
+      "image": "http://xn--eck5eb7eb2541d26fovj.biz/wp-content/uploads/2015/02/927c75bc-1024x576.jpg",
       "comment": "その四",
       "good": 10,
       "bad": 13,
@@ -71,7 +79,9 @@
     },
     {
       "id": 5,
+      "user_name": "がちゃたろう5",
       "url": "https://google.com",
+      "image": "http://xn--eck5eb7eb2541d26fovj.biz/wp-content/uploads/2015/02/927c75bc-1024x576.jpg",
       "comment": "その五",
       "good": 2,
       "bad": 23,
