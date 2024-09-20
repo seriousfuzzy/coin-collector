@@ -19,34 +19,26 @@ export class AssetsViewPage {
     information: any
     total: number
     viewMode: string
-    isNetworkError: boolean = false
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private restProvider: RestProvider) {
-    }
-
-    ionViewWillEnter() {
         this.restProvider.getAssets()
             .then(data => {
                 this.information = data
+            }).then(() => {
+            this.information = this.information.map(element => {
+                let temp = element.amount * element.price_jpy * 100
+                element.jpy = Math.round(temp) / 100
+                return element
             })
-            .then(() => {
-                this.information = this.information.map(element => {
-                    let temp = element.amount * element.price_jpy * 100
-                    element.jpy = Math.round(temp) / 100
-                    return element
-                })
 
-                this.total = 0
-                this.information.forEach(element => {
-                    this.total += element.jpy
-                })
-                this.total = Math.round(this.total)
+            this.total = 0
+            this.information.forEach(element => {
+                this.total += element.jpy
+            })
+            this.total = Math.round(this.total)
 
-                this.viewMode = 'jpy'
-            })
-            .catch(err => {
-                this.isNetworkError = true
-            })
+            this.viewMode = 'jpy'
+        })
     }
 
     addComma(value: number) {
