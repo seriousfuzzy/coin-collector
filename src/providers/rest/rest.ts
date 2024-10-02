@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http'
-import { Injectable } from '@angular/core'
+import {HttpClient} from '@angular/common/http'
+import {Injectable} from '@angular/core'
 
 /*
   Generated class for the RestProvider provider.
@@ -12,6 +12,7 @@ export class RestProvider {
     baseUrl = 'http://localhost:3000'
 
     constructor(public http: HttpClient) {
+        console.log('Hello RestProvider Provider')
     }
 
     getAssets() {
@@ -93,6 +94,8 @@ export class RestProvider {
         return promise
     }
 
+    // CatchUpPage
+
     getArticles() {
         return new Promise((resolve, reject) => {
             this.http.get(this.baseUrl + '/articles')
@@ -102,23 +105,6 @@ export class RestProvider {
                     reject(err)
                 })
         })
-    }
-
-    postLogin(email: string, hashedPassword: string) {
-        let promise: Promise<any>
-
-        promise = new Promise((resolve, reject) => {
-            this.http.post(this.baseUrl + '/login', {
-                email: email,
-                password: hashedPassword
-            }).subscribe(data => {
-                resolve(data)
-            }, err => {
-                reject(err)
-            })
-        })
-
-        return promise
     }
 
     toggleGood(id: string, is_add: boolean) {
@@ -140,6 +126,22 @@ export class RestProvider {
             this.http.put(this.baseUrl + '/articles/' + id + '/bad', {
                 id: id,
                 is_add: is_add,
+            })
+                .subscribe(data => {
+                    resolve(data)
+                }, err => {
+                    reject(err)
+                })
+        })
+    }
+
+    // PostArticlePage
+
+    postArticle(url: string, comment: string) {
+        return new Promise((resolve, reject) => {
+            this.http.post(this.baseUrl + '/articles', {
+                url: url,
+                comment: comment,
             })
                 .subscribe(data => {
                     resolve(data)

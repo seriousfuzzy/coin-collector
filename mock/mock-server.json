@@ -1,6 +1,4 @@
 {
-  "login": [
-  ],
   "assets": [
     {
       "amount": "2",
@@ -39,8 +37,11 @@
     },
     {
       "amount": "100",
-      "id": "basic-attention-token",
-      "price_jpy": "68.6663465621"
+      "id": "nem"
+    },
+    {
+      "amount": "10000",
+      "id": "experience-points"
     }
   ],
   "articles": [
@@ -98,7 +99,7 @@
   "dummy": [
     {
       "id": 1,
-      "is_add": true
+      "is_add": false
     },
     {
       "id": 2,
