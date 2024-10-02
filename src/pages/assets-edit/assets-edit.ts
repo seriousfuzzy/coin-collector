@@ -46,7 +46,7 @@ export class AssetsEditPage {
         }, timeoutMS)
     }
 
-    selectCoinName() {
+    addCoin(id: string) {
         this.selectedCoinName = ''
         this.isInput = this.selectedCoinName != ""
     }

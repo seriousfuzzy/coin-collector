@@ -16,12 +16,30 @@ export class RestProvider {
     }
 
     getAssets() {
-        return new Promise(resolve => {
-            this.http.get(this.baseUrl + '/assets')
+        let promise: Promise<Array<any>>
+
+        promise = new Promise((resolve, reject) => {
+            this.http.get(this.baseUrl + '/assets' + '?_sort=amount&_order=asc') // FIXME: ここのQueryStringはMock用
+                .subscribe(data => {
+                    resolve(<Array<any>>data)
+                }, err => {
+                    reject(err)
+                })
+        })
+
+        return promise
+    }
+
+    postAsset(id: string, amount: number) {
+        return new Promise((resolve, reject) => {
+            this.http.post(this.baseUrl + '/assets', {
+                amount: amount,
+                id: id,
+            })
                 .subscribe(data => {
                     resolve(data)
                 }, err => {
-                    console.log(err)
+                    reject(err)
                 })
         })
     }
@@ -37,6 +55,19 @@ export class RestProvider {
         })
     }
 
+    putAsset(id: string, amount: number) {
+        return new Promise((resolve, reject) => {
+            this.http.put(this.baseUrl + '/assets/' + id, {
+                amount: amount,
+                id: id,
+            }).subscribe(() => {
+                resolve()
+            }, err => {
+                reject(err)
+            })
+        })
+    }
+
     getSelectableCoinList() {
         return new Promise(resolve => {
             this.http.get(this.baseUrl + '/coinIds')
@@ -46,5 +77,20 @@ export class RestProvider {
                     console.log(err)
                 })
         })
+    }
+
+    getRates() {
+        let promise: Promise<Array<any>>
+
+        promise = new Promise((resolve, reject) => {
+            this.http.get(this.baseUrl + '/rates')
+                .subscribe(data => {
+                    resolve(<Array<any>>data)
+                }, err => {
+                    reject(err)
+                })
+        })
+
+        return promise
     }
 }
