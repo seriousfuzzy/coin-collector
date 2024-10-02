@@ -12,7 +12,6 @@ import {Storage} from "@ionic/storage";
 })
 export class ArticlesViewPage {
     articles: any
-    isNetworkError: boolean = false
 
     constructor(public navCtrl: NavController, private storage: Storage, private restProvider: RestProvider, private urlProvider: UrlProvider, private toastCtrl: ToastController) {
         // storage['evaluation']がない場合新規作成
@@ -28,9 +27,6 @@ export class ArticlesViewPage {
                     element.reliability = Math.round(element.good / (element.good + element.bad) * 100)
                     return element
                 })
-            })
-            .catch(() => {
-                this.isNetworkError = true
             })
     }
 
