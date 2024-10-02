@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { IonicPage, NavController, NavParams } from 'ionic-angular'
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular'
 import { RestProvider } from "../../providers/rest/rest"
 
 /**
@@ -15,20 +15,27 @@ import { RestProvider } from "../../providers/rest/rest"
     templateUrl: 'assets-edit.html',
 })
 export class AssetsEditPage {
+    private userAssetsList: any
     private selectableCoinList: any
     private matchedCoinList: any
     private timeoutId: number
     private isInput: boolean
     private isNotFound: boolean
     private selectedCoinName: string
+    private selectedCoinName: string
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private restProvider: RestProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private restProvider: RestProvider, private toastCtrl: ToastController) {
         this.restProvider.getSelectableCoinList()
             .then(data => {
                 this.selectableCoinList = data
             })
+        this.restProvider.getAssets()
+            .then(data => {
+                this.userAssetsList = data
+            })
     }
 
+    getInputCoinName() {
     getInputCoinName() {
         const timeoutMS = 400
         clearTimeout(this.timeoutId)
@@ -53,6 +60,7 @@ export class AssetsEditPage {
                 element.symbol.toLowerCase().indexOf(input) > -1
         })
 
+        this.isNotFound = this.matchedCoinList.length <= 0
         this.isNotFound = this.matchedCoinList.length <= 0
     }
 }
