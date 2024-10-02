@@ -46,3 +46,5 @@ demos/src/**/*.metadata.json
 demos/src/**/*.css.shim.ts
 
 ./mock-server.json
+
+build

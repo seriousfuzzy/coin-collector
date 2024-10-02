@@ -22,6 +22,7 @@ export class AssetsEditPage {
     private isInput: boolean
     private isNotFound: boolean
     private selectedCoinName: string
+    private selectedCoinName: string
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private restProvider: RestProvider, private toastCtrl: ToastController) {
         this.restProvider.getSelectableCoinList()
@@ -35,6 +36,7 @@ export class AssetsEditPage {
     }
 
     getInputCoinName() {
+    getInputCoinName() {
         const timeoutMS = 400
         clearTimeout(this.timeoutId)
         this.timeoutId = setTimeout(() => {
@@ -46,73 +48,7 @@ export class AssetsEditPage {
 
     addCoin(id: string) {
         this.selectedCoinName = ''
-        this.isInput = this.selectedCoinName != ''
-
-        this.restProvider.postAsset(id, 0)
-            .then(() => {
-                this.restProvider.getAssets()
-                    .then(data => {
-                        this.userAssetsList = data
-                    })
-            })
-            .catch(err => {
-                    // TODO: 通信エラーとToastの中身を振り分ける
-                    let toast = this.toastCtrl.create({
-                        message: "既にこのコインは登録されています",
-                        duration: 3000
-                    })
-                    toast.present()
-                }
-            )
-
-    }
-
-    deleteCoinAsset(id: string) {
-        this.restProvider.deleteAsset(id)
-            .then(() => {
-                let toast = this.toastCtrl.create({
-                    message: "削除が完了しました。",
-                    duration: 3000
-                })
-                toast.present()
-            })
-            .catch(() => {
-                let toast = this.toastCtrl.create({
-                    message: "削除に失敗しました",
-                    duration: 3000,
-                })
-                toast.present()
-            })
-            .then(() => {
-                this.restProvider.getAssets()
-                    .then(data => {
-                        this.userAssetsList = data
-                    })
-            })
-    }
-
-    editAmount(id: string, amount: number) {
-        const timeoutMS = 1000
-        clearTimeout(this.timeoutId)
-        this.timeoutId = setTimeout(() => {
-            // timeoutMS秒間の入力待機後、編集をAPIに投稿される
-            // APIに投稿する
-            this.restProvider.putAsset(id, amount)
-                .then(() => {
-                    let toast = this.toastCtrl.create({
-                        message: "保存完了しました",
-                        duration: 2000
-                    })
-                    toast.present()
-                })
-                .catch(() => {
-                    let toast = this.toastCtrl.create({
-                        message: "保存に失敗しました。通信環境をご確認ください",
-                        duration: 2000
-                    })
-                    toast.present()
-                })
-        }, timeoutMS)
+        this.isInput = this.selectedCoinName != ""
     }
 
     private filteringCoinList(input: string) {
@@ -124,6 +60,7 @@ export class AssetsEditPage {
                 element.symbol.toLowerCase().indexOf(input) > -1
         })
 
+        this.isNotFound = this.matchedCoinList.length <= 0
         this.isNotFound = this.matchedCoinList.length <= 0
     }
 }
