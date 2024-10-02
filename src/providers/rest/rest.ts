@@ -93,4 +93,43 @@ export class RestProvider {
 
         return promise
     }
-}
+
+    // CatchUpPage
+
+    getArticles() {
+      return new Promise((resolve, reject) => {
+        this.http.get(this.baseUrl + '/articles')
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        })
+      })
+    }
+
+    toggleGood(id: string) {
+      return new Promise((resolve, reject) => {
+        this.http.post(this.baseUrl + '/articles/' + id + '/good', {
+          id: id,
+        })
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        })
+      })
+    }
+
+    toggleBad(id: string) {
+      return new Promise((resolve, reject) => {
+        this.http.post(this.baseUrl + '/articles/' + id + '/bad', {
+          id: id,
+        })
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        })
+      })
+    }
+  }
