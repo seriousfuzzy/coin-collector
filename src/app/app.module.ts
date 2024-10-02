@@ -8,6 +8,9 @@ import { ListPage } from '../pages/list/list'
 import { NotLoggedHomePage } from "../pages/not-logged-home/not-logged-home"
 import { AssetsViewPage } from "../pages/assets-view/assets-view"
 import { AssetsEditPage } from "../pages/assets-edit/assets-edit"
+import { ArticlesViewPage } from "../pages/articles-view/articles-view";
+import { ArticlePostPage } from "../pages/article-post/article-post";
+import { UrlProvider } from '../providers/url/url';
 
 import { StatusBar } from '@ionic-native/status-bar'
 import { SplashScreen } from '@ionic-native/splash-screen'
@@ -23,6 +26,8 @@ import { IonicStorageModule } from "@ionic/storage"
         ListPage,
         AssetsViewPage,
         AssetsEditPage,
+        ArticlesViewPage,
+        ArticlePostPage,
     ],
     imports: [
         BrowserModule,
@@ -38,12 +43,15 @@ import { IonicStorageModule } from "@ionic/storage"
         ListPage,
         AssetsViewPage,
         AssetsEditPage,
+        ArticlesViewPage,
+        ArticlePostPage,
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        RestProvider
+        RestProvider,
+        UrlProvider
     ]
 })
 export class AppModule {
