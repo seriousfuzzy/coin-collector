@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { IonicPage, NavController, NavParams } from 'ionic-angular'
-import { AboutPage } from "../about/about"
 
 /**
  * Generated class for the NotLoggedHomePage page.
@@ -19,11 +18,7 @@ export class NotLoggedHomePage {
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }
 
-    goSignUpPage() {
+    goSignUpPage(){
         // this.navCtrl.push(SignUpPage)
-    }
-
-    goHowToUsePage() {
-        this.navCtrl.push(AboutPage)
     }
 }
