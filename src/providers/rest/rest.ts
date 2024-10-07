@@ -18,7 +18,7 @@ export class RestProvider {
         let promise: Promise<Array<any>>
 
         promise = new Promise((resolve, reject) => {
-            this.http.get(this.baseUrl + '/user?user_id=' + userId)
+            this.http.get(this.baseUrl + '/users?user_id=' + userId)
                 .subscribe(data => {
                     resolve(<Array<any>>data)
                 }, err => {
@@ -132,23 +132,6 @@ export class RestProvider {
         })
 
         return promise
-    }
-
-    signUp(name: string, sex: string, birthday: string, email: string, hashedPassword: string) {
-        return new Promise((resolve, reject) => {
-            this.http.post(this.baseUrl + '/users', {
-                name: name,
-                sex: sex,
-                birthday: birthday,
-                email: email,
-                password: hashedPassword
-            })
-                .subscribe(() => {
-                    resolve(this.postLogin(email, hashedPassword))
-                }, err => {
-                    reject(err)
-                })
-        })
     }
 
     postLogin(email: string, hashedPassword: string) {
