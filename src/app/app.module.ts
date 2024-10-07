@@ -10,7 +10,6 @@ import { AssetsViewPage } from "../pages/assets-view/assets-view"
 import { AssetsEditPage } from "../pages/assets-edit/assets-edit"
 import { ArticlesViewPage } from "../pages/articles-view/articles-view"
 import { ArticlePostPage } from "../pages/article-post/article-post"
-import { SignUpPage } from "../pages/sign-up/sign-up";
 import { UrlProvider } from '../providers/url/url'
 
 import { StatusBar } from '@ionic-native/status-bar'
@@ -36,7 +35,6 @@ import { UserDetailPage } from "../pages/user-detail/user-detail"
         AssetsEditPage,
         ArticlesViewPage,
         ArticlePostPage,
-        SignUpPage,
     ],
     imports: [
         BrowserModule,
@@ -60,7 +58,6 @@ import { UserDetailPage } from "../pages/user-detail/user-detail"
         AssetsEditPage,
         ArticlesViewPage,
         ArticlePostPage,
-        SignUpPage,
     ],
     providers: [
         StatusBar,
